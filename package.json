@@ -1,0 +1,25 @@
+{
+  "name": "vivintfail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quickdraw19/vivint-assessment-fail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quickdraw19/vivint-assessment-fail/issues"
+  },
+  "homepage": "https://github.com/Quickdraw19/vivint-assessment-fail#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "save-dev": "^0.0.1-security"
+  }
+}
