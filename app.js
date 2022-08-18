@@ -6,17 +6,22 @@ Calculates the average from a series of values.
 */
 function getAverage(numberArray) {
   const DROPS = 2
+  let error = false
   if (numberArray.length < 3) {
     return "After dropping the two lowest values, there is nothing left to calculate. Please submit more than 2 scores."
   }
 
   numberArray.sort(function(a, b) {
     if (isNaN(a) || isNaN(b)) {
-      return "Error: Values must only contain numbers."
+      error =  "Values must only contain numbers."
     }
 
     return a - b
-  }).splice(0, 2) // Sort the array and remove the first two items.
+  }).splice(0, DROPS) // Sort the array and remove the first two items.
+
+  if (error) {
+    return `Error: ${error}`
+  }
 
   // Use reduce to total numbers instead of a foreach loop. This will concat the string values, so they need to be converted to numbers.
   let total = numberArray.reduce((runningTotal, currentVal) => (+runningTotal) + (+currentVal)) // Iterate through each element and add them together.
@@ -24,16 +29,13 @@ function getAverage(numberArray) {
   return average.toFixed(2) // Two decimal places.
 }
 
-// Test data for getAverage function:
+//Test data for getAverage function:
 console.log("Test 1: " + getAverage(['4', '1', '6', '10', '2', '3']))  //5.75
 console.log("Test 2: " + getAverage([4, 1, 6, 10, 2, 3])) //5.75
 console.log("Test 3: " + getAverage(["4", 1, "6", 10, '2', 3])) //5.75
 console.log("Test 4: " + getAverage([4.6, 1.3, 0.6, 10.34, 2.00001, 0.0000003])) //4.56
 console.log("Test 5: " + getAverage([-4, 1, 6, -10, 2, -3])) //1.5
-
-//** Fail - is returning 'NaN' **
 console.log("Test 6: " + getAverage(['a', 'b', 'c', 'd', 'e', 'f'])) // Validation error message.
-
 console.log("Test 7: " + getAverage([])) // Validation error message.
 console.log("Test 8: " + getAverage([1])) // Validation error message.
 console.log("Test 9: " + getAverage([1,2])) // Validation error message.
